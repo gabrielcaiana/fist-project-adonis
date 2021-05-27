@@ -1,4 +1,5 @@
 import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
+import Database from "@ioc:Adonis/Lucid/Database";
 import Post from "App/Models/Post";
 
 export default class PostsController {
@@ -20,7 +21,30 @@ export default class PostsController {
     return post;
   }
 
-  public async show({}: HttpContextContract) {}
+  public async show({ params }: HttpContextContract) {
+    // Realizando uma busca por um post no banco de dados utilizando SQL
+    // const post = await Database.rawQuery(`select * from posts where id = ${params.id}`)
+
+    // Exemplos de utilizando do find
+
+    // Busca no banco de dados um post por Id
+    // const post = await Post.find(params.id);
+
+    // Busca no banco de dados por algum tipo de informaçāo
+    // const post = await Post.findBy('title', params.title)
+    
+
+    // Busca no banco de dados e caso nao encontre exibe o erro automaticamente
+    // Ao utilizar o findOrFail nao preciso utilizar o codigo abaixo e nao preciso pegar na requisicao o "response"
+
+     // if (!Post) {
+    //   return response.notFound({ error: { message: "Not found!" } });
+    // }
+
+     const post = await Post.findOrFail(params.id)
+
+    return post;
+  }
 
   public async update({}: HttpContextContract) {}
 
