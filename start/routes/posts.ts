@@ -4,4 +4,9 @@ import Route from '@ioc:Adonis/Core/Route'
 // o metodo apiOnly() fornece apenas os metodos que foram criados no controller e nao todos que vem por padrao no adonis do MVC
 
 // com o comando no terminal node ace list:routes consigo visualizar todas as rotas criadas
-Route.resource('/posts', 'PostsController').apiOnly()
+Route.resource('/posts', 'PostsController').apiOnly().middleware({
+    //definindo quais metodos do controller serao protegidos e quais serao as middlewares
+    store: ['auth'],
+    update: ['auth'],
+    destroy: ['auth']
+})
