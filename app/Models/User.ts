@@ -13,6 +13,7 @@ export default class User extends BaseModel {
   @column()
   public email: string
 
+  // A propriedade s"erializeAs: null" oculta a senha para o frontend
   @column({ serializeAs: null })
   public password: string
 
