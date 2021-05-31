@@ -1,7 +1,7 @@
+// import Database from "@ioc:Adonis/Lucid/Database";
 import { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
-import Database from "@ioc:Adonis/Lucid/Database";
 import Post from "App/Models/Post";
-import PostValidator from 'App/Validators/PostValidator'
+import {StoreValidator, UpdateValidator} from 'App/Validators/Post'
 
 export default class PostsController {
   public async index({}: HttpContextContract) {
@@ -19,7 +19,7 @@ export default class PostsController {
     //const { title, content } = request.all()
     //const post = await Post.create({title, content})
 
-    const data = await request.validate(PostValidator)
+    const data = await request.validate(StoreValidator)
 
     const post = await Post.create(data);
 
@@ -53,7 +53,7 @@ export default class PostsController {
 
   public async update({request ,params}: HttpContextContract) {
     const post = await Post.findOrFail(params.id)
-    const data = await request.validate(PostValidator)
+    const data = await request.validate(UpdateValidator)
 
     post.merge(data)
 
