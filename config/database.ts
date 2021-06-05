@@ -62,6 +62,10 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
   |
   */
   orm: {
+    //Serializando os dados do json de retorn para o padrao camelCase
+    getSerializeAsKey(_, key) {
+      return key
+    }
   },
 }
 
