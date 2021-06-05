@@ -8,6 +8,8 @@ export default class PostsController {
     // Exibe os posts por ordem de criaçāo
     // const posts = await Post.all();
 
+    // const posts = await Post.query().paginate(1, 3)
+
     // Exibe os posts ordenando por id
     // asc ja vem por padrao - nao precisaria passar como segundo parametro
     // o metodo preload so esta disponivel em uma query e nao no metodo all()
