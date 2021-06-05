@@ -9,5 +9,11 @@ export class StoreValidator {
 	title: schema.string({ trim: true}, [rules.unique({ table: 'posts', column: 'title'})]),
 	content: schema.string({ trim: true}),
   })
-  public messages = {}
+  public messages = {
+    // Exemplo de mensagem personaliza, basta passar o nome seguido da regra
+
+    //  required: 'Este campo e obrigatorio'
+    // 'title.unique': 'O titulo precisa ser unico '
+    // 'title.unique': 'O {{ field }} precisa ser unico '
+  }
 }
