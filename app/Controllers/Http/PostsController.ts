@@ -10,6 +10,7 @@ export default class PostsController {
 
     // Exibe os posts ordenando por id
     // asc ja vem por padrao - nao precisaria passar como segundo parametro
+    // o metodo preload so esta disponivel em uma query e nao no metodo all()
     const posts = await Post.query().orderBy('id', 'asc').preload('author')
 
     return posts;
