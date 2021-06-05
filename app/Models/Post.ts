@@ -12,8 +12,8 @@ export default class Post extends BaseModel {
   @column()
   public content:string
 
-
-  @column()
+  // serializeAs: null oculta o valor no retorno do json
+  @column({serializeAs: null})
   public userId:number
   // com a chave extrangeira user_id nem precisaria passar o parametro foreingnKey com o valor, o adonis ja saberia montar
   @belongsTo(() => User, {foreignKey: 'userId'})
