@@ -63,6 +63,7 @@ export default class PostsController {
     const post = await Post.findOrFail(params.id)
     const data = await request.validate(UpdateValidator)
 
+
     post.merge(data)
 
     await post.save()

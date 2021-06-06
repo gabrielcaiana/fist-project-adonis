@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 import Hash from "@ioc:Adonis/Core/Hash";
-import { column, beforeSave, BaseModel, computed } from "@ioc:Adonis/Lucid/Orm";
+import { column, beforeSave, BaseModel } from "@ioc:Adonis/Lucid/Orm"; // import computed caso for usar
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -16,10 +16,10 @@ export default class User extends BaseModel {
   @column()
   public name: string;
 
-  @computed()
-  public get firstName() {
-    return this.name.split(' ')[0]
-  }
+  // @computed()
+  // public get firstName() {
+  //   return this.name.split(' ')[0]
+  // }
 
   @column()
   public role: "admin" | "normal";

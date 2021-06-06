@@ -1,7 +1,3 @@
-import Route from "@ioc:Adonis/Core/Route";
+import Route from '@ioc:Adonis/Core/Route'
 
-Route.group(() => {
-  Route.get("/", "UserController.index");
-  Route.post("/", "UserController.store");
-  Route.delete("/", "UserController.destroy");
-}).prefix("/users");
+Route.resource('/users', 'UserController').apiOnly()
